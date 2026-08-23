@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HAXHAX · Tutorial Search</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- ===== HEADER ===== -->
+    <header class="app-header">
+      <div class="logo-wrapper">
+        <i class="fas fa-graduation-cap logo-icon"></i>
+        <span class="logo-text">HAXHAX</span>
+        <span class="logo-badge">tutorials</span>
+      </div>
+      <p class="tagline">AI‑curated learning · find the best tutorial, fast</p>
+    </header>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about-section">
+      <p>
+        <i class="fas fa-quote-left quote-icon"></i>
+        <strong>HAXHAX Tutorial Search</strong> finds the <strong>best tutorial videos</strong> on YouTube.
+        We combine YouTube's search with Google's Gemini AI to analyze 
+        <strong>views, likes, comments, and content quality</strong> to surface 
+        the single most relevant tutorial for your needs.
+        <br /><br />
+        Unlike YouTube's algorithm, we don't prioritize popularity or ads. 
+        We focus on <strong>teaching quality, clarity, and relevance</strong>. 
+        Whether you're learning to code, studying English, or mastering a new skill, 
+        HAXHAX cuts through the noise.
+      </p>
+    </section>
+
+    <!-- ===== FILTERS ===== -->
+    <div class="filters" id="filtersContainer">
+
+      <!-- Category -->
+      <div class="filter-group">
+        <label>🎯 Tutorial Category</label>
+        <div class="filter-buttons" id="categoryButtons">
+          <button data-category="all" class="active">All</button>
+          <button data-category="coding">💻 Coding</button>
+          <button data-category="cybersecurity">🔒 Cybersecurity</button>
+          <button data-category="english">🇬🇧 English</button>
+          <button data-category="design">🎨 Design</button>
+          <button data-category="datascience">📊 Data Science</button>
+          <button data-category="devops">⚙️ DevOps</button>
+          <button data-category="cloud">☁️ Cloud</button>
+          <button data-category="aiml">🤖 AI/ML</button>
+          <button data-category="softskills">🧠 Soft Skills</button>
+          <button data-category="learning">📚 Learning</button>
+        </div>
+      </div>
+
+      <!-- Sub-Category (hidden by default) -->
+      <div class="filter-group sub-category-group" id="subCategoryGroup">
+        <label>📂 Sub‑Category</label>
+        <div class="filter-buttons" id="subCategoryButtons">
+          <!-- dynamically populated -->
+        </div>
+      </div>
+
+      <!-- ===== DURATION FILTER REMOVED ===== -->
+
+    </div>
+
+    <!-- ===== SEARCH BAR ===== -->
+    <div class="search-section">
+      <input type="text" id="searchInput" placeholder="What do you want to learn about?" autofocus />
+      <button id="searchBtn"><i class="fas fa-magnifying-glass"></i> Search</button>
+    </div>
+
+    <!-- ===== LOADING ===== -->
+    <div class="loading" id="loadingIndicator">
+      <div class="spinner"></div>
+      <p>Scanning & selecting best match …</p>
+      <div class="sub">Gemini is analysing relevance</div>
+    </div>
+
+    <!-- ===== ERROR ===== -->
+    <div class="error-box" id="errorBox">
+      <i class="fas fa-circle-exclamation"></i>
+      <span id="errorMessage">Something went wrong.</span>
+    </div>
+
+    <!-- ===== RESULTS ===== -->
+    <div class="results" id="resultsContainer">
+
+      <!-- Best Match -->
+      <div class="best-match" id="bestMatch">
+        <div class="best-badge"><i class="fas fa-crown"></i> Best match</div>
+        <div class="video-wrapper" id="videoWrapper">
+          <iframe id="bestIframe" src="" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="ai-explanation" id="explanationBox">
+          <div class="label"><i class="fas fa-brain"></i> Why this video?</div>
+          <p id="explanationText">Gemini selected this as the most relevant.</p>
+          <div class="channel" id="channelInfo"></div>
+          <div class="score-breakdown" id="scoreBreakdown"></div>
+        </div>
+      </div>
+
+      <!-- All Videos -->
+      <div class="all-videos">
+        <div class="section-title">
+          <i class="fas fa-list-ul"></i> All results <span id="resultCount"></span>
+        </div>
+        <div class="video-grid" id="videoGrid"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
